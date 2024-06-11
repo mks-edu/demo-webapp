@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="row" th:fragment="jstree">
+        <div class="col-md-3 col-sm-6 col-xs-3">
+            <p>Select a item</p>
+            <br />
+            <div id="jstree"></div>
+        </div>
+        <div class="col-md-9 col-sm-6 col-xs-9">
+            <th:block th:include="fragments/frg_configuration_main"></th:block>
+        </div>
+    </div>    
+</body>
+</html>
