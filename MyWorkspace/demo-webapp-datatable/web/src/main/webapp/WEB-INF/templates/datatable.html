@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo Platform MyWorkspace Web Application - How to make grid data UI with Datatable</title>
+    <th:block th:include="fragments/head"></th:block>
+    <link rel="stylesheet" type="text/css" href="/library/webjars/datatables/1.10.25/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="/library/webjars/datatables/1.10.25/css/jquery.dataTables.min.css">
+</head>
+<body>
+
+    <div th:replace="~{fragments/header :: header}">Header</div>
+    <th:block th:include="fragments/frg_datatable"></th:block>
+
+    <!-- Bottom Javascripts -->
+    <script src="/library/webjars/datatables/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="/library/webjars/datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+    <script src="/library/webjars/datatables.net/js/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="/library/webjars/datatables.net/js/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="/library/webjars/datatables.net/js/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="/library/webjars/datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+    <script src="/library/webjars/datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+
+    <script type="text/javascript" th:src="@{/resources/js/datatable.js}" ></script>
+</body>
+</html>
