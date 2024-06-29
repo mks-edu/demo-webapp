@@ -8,9 +8,9 @@
 <!--    </parent>-->
     <!-- Comments parent tag to run the web standalone -->
 	<groupId>mks.platform.samplewebapp</groupId>
-	<artifactId>samplewebapp-web</artifactId>
+	<artifactId>demo-webapp-handsontable-web</artifactId>
 	<version>23.0</version>
-	<name>samplewebapp-web</name>
+	<name>demo-webapp-handsontable-web</name>
 	<packaging>war</packaging>
 
 	<properties>
@@ -32,21 +32,21 @@
 	</properties>
 
 	<dependencies>
-		<dependency>
-			<groupId>mks.platform.samplewebapp</groupId>
-			<artifactId>samplewebapp-api</artifactId>
-			<version>${module.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>mks.platform.samplewebapp</groupId>
-			<artifactId>samplewebapp-common</artifactId>
-			<version>${module.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>mks.platform.samplewebapp</groupId>
-			<artifactId>samplewebapp-controller</artifactId>
-			<version>${module.version}</version>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>mks.platform.samplewebapp</groupId>-->
+<!--			<artifactId>samplewebapp-api</artifactId>-->
+<!--			<version>${module.version}</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>mks.platform.samplewebapp</groupId>-->
+<!--			<artifactId>samplewebapp-common</artifactId>-->
+<!--			<version>${module.version}</version>-->
+<!--		</dependency>-->
+<!--		<dependency>-->
+<!--			<groupId>mks.platform.samplewebapp</groupId>-->
+<!--			<artifactId>samplewebapp-controller</artifactId>-->
+<!--			<version>${module.version}</version>-->
+<!--		</dependency>-->
         <!--         <dependency> -->
         <!--             <groupId>mks.platform.samplewebapp</groupId> -->
         <!--             <artifactId>samplewebapp-impl</artifactId> -->
