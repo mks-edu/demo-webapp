@@ -2,35 +2,35 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<artifactId>samplewebapp</artifactId>
+		<artifactId>demo-webapp-tree</artifactId>
 		<groupId>mks.platform.samplewebapp</groupId>
 		<version>23.0</version>
         <relativePath>../pom.xml</relativePath>
 	</parent>
 	<groupId>mks.platform.samplewebapp</groupId>
-	<artifactId>samplewebapp-tool</artifactId>
+	<artifactId>demo-webapp-tree-tool</artifactId>
 <!-- 	<version>23.0</version> -->
 	<packaging>war</packaging>
 
 	<dependencies>
          <dependency>
             <groupId>mks.platform.samplewebapp</groupId>
-            <artifactId>samplewebapp-common</artifactId>
+            <artifactId>demo-webapp-tree-common</artifactId>
             <version>${module.version}</version>
         </dependency>
 
         <dependency>
             <groupId>mks.platform.samplewebapp</groupId>
-            <artifactId>samplewebapp-controller</artifactId>
+            <artifactId>demo-webapp-tree-controller</artifactId>
             <version>${module.version}</version>
             <exclusions>
 				<exclusion>
 					<groupId>mks.platform.samplewebapp</groupId>
-            		<artifactId>samplewebapp-api</artifactId>
+            		<artifactId>demo-webapp-tree-api</artifactId>
 				</exclusion>
 				<exclusion>
 					<groupId>mks.platform.samplewebapp</groupId>
-            		<artifactId>samplewebapp-impl</artifactId>
+            		<artifactId>demo-webapp-tree-impl</artifactId>
 				</exclusion>
             </exclusions>
         </dependency>
