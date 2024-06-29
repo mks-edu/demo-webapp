@@ -2,15 +2,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 <!--    <parent>-->
-<!--        <artifactId>samplewebapp</artifactId>-->
+<!--        <artifactId>demo-webapp-datatable</artifactId>-->
 <!--        <groupId>mks.platform.samplewebapp</groupId>-->
 <!--        <version>23.0</version>-->
 <!--    </parent>-->
     <!-- Comments parent tag to run the web standalone -->
 	<groupId>mks.platform.samplewebapp</groupId>
-	<artifactId>samplewebapp-web</artifactId>
+	<artifactId>demo-webapp-datatable-web</artifactId>
 	<version>23.0</version>
-	<name>samplewebapp-web</name>
+	<name>demo-webapp-datatable-web</name>
 	<packaging>war</packaging>
 
 	<properties>
@@ -34,22 +34,22 @@
 	<dependencies>
 		<dependency>
 			<groupId>mks.platform.samplewebapp</groupId>
-			<artifactId>samplewebapp-api</artifactId>
+			<artifactId>demo-webapp-datatable-api</artifactId>
 			<version>${module.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>mks.platform.samplewebapp</groupId>
-			<artifactId>samplewebapp-common</artifactId>
+			<artifactId>demo-webapp-datatable-common</artifactId>
 			<version>${module.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>mks.platform.samplewebapp</groupId>
-			<artifactId>samplewebapp-controller</artifactId>
+			<artifactId>demo-webapp-datatable-controller</artifactId>
 			<version>${module.version}</version>
 		</dependency>
         <!--         <dependency> -->
         <!--             <groupId>mks.platform.samplewebapp</groupId> -->
-        <!--             <artifactId>samplewebapp-impl</artifactId> -->
+        <!--             <artifactId>demo-webapp-datatable-impl</artifactId> -->
         <!--             <version>${module.version}</version> -->
         <!--             <exclusions> -->
         <!--                 <exclusion> -->

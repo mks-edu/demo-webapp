@@ -23,13 +23,13 @@
 			<!-- project dependencies -->
 			<dependency>
 				<groupId>mks.platform.samplewebapp</groupId>
-				<artifactId>samplewebapp-api</artifactId>
+				<artifactId>demo-webapp-datatable-api</artifactId>
 				<version>23.0</version>
 			</dependency>
 
 			<dependency>
 				<groupId>mks.platform.samplewebapp</groupId>
-				<artifactId>samplewebapp-impl</artifactId>
+				<artifactId>demo-webapp-datatable-impl</artifactId>
 				<version>23.0</version>
 			</dependency>
 
