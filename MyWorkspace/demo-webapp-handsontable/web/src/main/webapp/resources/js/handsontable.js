@@ -1,3 +1,4 @@
+var hotProduct;
 /**
  * Processing events of search OKR by emails.
  */
@@ -51,3 +52,30 @@ function initTable() {
         licenseKey: 'non-commercial-and-evaluation'
   });
 }
+
+/**
+ * Processing events of question table.
+ */
+$(document).ready(function() {
+
+    $('#formInput').submit(function(e) {
+      e.preventDefault();
+    
+      var tableData = hotProduct.getData();
+    
+      $.ajax({
+          url : _ctx + 'handsontable/save',
+          type : 'POST',
+          data : JSON.stringify(tableData),
+          dataType: "json",
+          contentType: 'application/json',
+          success : function(result) {
+              result = JSON.parse(result);
+              console.log("Result:" + result.status);
+          },
+          error : function() {
+              console.log("Error!");
+          }
+      });
+    });
+});

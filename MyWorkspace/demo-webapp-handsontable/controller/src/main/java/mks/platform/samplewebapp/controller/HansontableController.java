@@ -28,6 +28,9 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -37,6 +40,7 @@ import mks.platform.samplewebapp.common.model.TableStructure;
  * Handles requests for the application home page.
  */
 @Controller
+@RequestMapping("/handsontable")
 public class HansontableController extends BaseController {
 	@Value("${productList.colHeaders}")
 	private String[] productListColHeaders;
@@ -44,14 +48,14 @@ public class HansontableController extends BaseController {
 	@Value("${productList.colWidths}")
 	private int[] productListColWidths;
 
-	@GetMapping(value = "/handsontable")
+	@GetMapping(value = "")
 	public ModelAndView displayHome(HttpServletRequest request, HttpSession httpSession) {
 		ModelAndView mav = new ModelAndView("handsontable");
 
 		return mav;
 	}
 	
-	@GetMapping(value = {"/handsontable/loaddata"}, produces="application/json")
+	@GetMapping(value = {"loaddata"}, produces="application/json")
 	@ResponseBody
     public TableStructure getProductTableData() {
 		List<Object[]> lstProducts = getDemoData();
@@ -61,6 +65,13 @@ public class HansontableController extends BaseController {
         return productTable;
     }
 
+	@PostMapping(value = "/save")
+	public String processSave(@RequestBody List<Object[]> tableData) {
+		ModelAndView mav = new ModelAndView("handsontable");
+		
+		return null;
+	}
+    
 	private List<Object[]> getDemoData() {
 		List<Object[]> data = new ArrayList<Object[]>();
 		
