@@ -20,12 +20,10 @@ function loadTableData() {
             console.log("res=" + JSON.stringify(res));
     
             if (res) {
-                tblProductData = res;
-                tblProductColHeaders = res.colHeaders;
-                tblProductColWidths = res.colWidths;
-                okrData = res.data;
-                initTable();
-            }                
+                initTable(res.colHeaders, res.colWidths, res.data);
+            } else {
+                console.log("Error: no result.");
+            }              
         },
         error : function (e) {
             console.log("Error: " + e);
@@ -33,14 +31,14 @@ function loadTableData() {
     });
 }
 
-function initTable() {
+function initTable(colHeaders, colWidths, data) {
   var container = document.getElementById('tblProduct');
   
   hotProduct = new Handsontable(container, {
-        data: tblProductData.data,
-        colHeaders: tblProductData.colHeaders,
-        colWidths: tblProductData.colWidths,
-        height: 800,
+        data: data,
+        colHeaders: colHeaders,
+        colWidths: colWidths,
+        // height: 800,
         rowHeaders: true,
         minRows: 10,
         currentRowClassName: 'currentRow',
@@ -53,29 +51,47 @@ function initTable() {
   });
 }
 
+function updateTable(colHeaders, colWidths, data) {
+    hotProduct.loadData(data);
+}
+
 /**
  * Processing events of question table.
  */
 $(document).ready(function() {
 
     $('#formInput').submit(function(e) {
-      e.preventDefault();
+        e.preventDefault();
+        
+        var colHeaders = hotProduct.getColHeader();
+        var tableData = hotProduct.getData();
+        
+        // Build array of column width
+        var colWidths=[]
+        for (let i = 0; i < colHeaders.length; i++) {
+            let w = hotProduct.getColWidth(i);
+            colWidths.push(w);
+        }
+        
+        console.log("colHeaders=" + colHeaders);
+        console.log("colWidths=" + colWidths);
     
-      var tableData = hotProduct.getData();
-    
-      $.ajax({
+        var formDataJson = JSON.stringify({"colWidths": colWidths, "colHeaders": colHeaders, "data": tableData});
+        
+        $.ajax({
           url : _ctx + 'handsontable/save',
           type : 'POST',
-          data : JSON.stringify(tableData),
+          data : formDataJson,
           dataType: "json",
           contentType: 'application/json',
-          success : function(result) {
-              result = JSON.parse(result);
-              console.log("Result:" + result.status);
+          success : function(res) {
+              // result = JSON.parse(result);
+              console.log("Result res.colHeaders:" + res.colHeaders);
+              updateTable(res.colHeaders, res.colWidths, res.data);
           },
           error : function() {
               console.log("Error!");
           }
-      });
+        });
     });
 });

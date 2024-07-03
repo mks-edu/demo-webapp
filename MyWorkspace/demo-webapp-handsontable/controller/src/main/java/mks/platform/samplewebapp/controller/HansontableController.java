@@ -25,6 +25,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,6 +36,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import mks.platform.samplewebapp.common.model.TableStructure;
+import mks.platform.samplewebapp.services.StorageService;
 
 /**
  * Handles requests for the application home page.
@@ -47,6 +49,9 @@ public class HansontableController extends BaseController {
 	
 	@Value("${productList.colWidths}")
 	private int[] productListColWidths;
+	
+	@Autowired
+	StorageService storageService;
 
 	@GetMapping(value = "")
 	public ModelAndView displayHome(HttpServletRequest request, HttpSession httpSession) {
@@ -66,10 +71,16 @@ public class HansontableController extends BaseController {
     }
 
 	@PostMapping(value = "/save")
-	public String processSave(@RequestBody List<Object[]> tableData) {
-		ModelAndView mav = new ModelAndView("handsontable");
+	@ResponseBody
+	public TableStructure processSave(@RequestBody TableStructure tableData) {
 		
-		return null;
+		// Demo to save and reload data
+		List<Object[]> newData = storageService.saveProductList(tableData.getData());
+		
+		// Re-update data and return back to client.
+		tableData.setData(newData);
+
+		return tableData;
 	}
     
 	private List<Object[]> getDemoData() {
