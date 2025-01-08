@@ -87,6 +87,7 @@
 	<module>controller</module>
 	<module>tool</module>
 	<module>web</module>
+	<module>jpa</module>
   </modules>
   
 </project>

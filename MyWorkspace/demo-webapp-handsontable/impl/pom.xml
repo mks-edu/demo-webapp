@@ -22,6 +22,11 @@
 			<artifactId>demo-webapp-handsontable-api</artifactId>
 			<version>${module.version}</version>
 		</dependency>
+        <dependency>
+            <groupId>mks.platform.samplewebapp</groupId>
+            <artifactId>demo-webapp-handsontable-jpa</artifactId>
+            <version>${module.version}</version>
+        </dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
@@ -37,12 +42,10 @@
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-commons</artifactId>
-            <version>${spring.data.commons.version}</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.data</groupId>
             <artifactId>spring-data-jpa</artifactId>
-            <version>${spring.data.jpa.version}</version>
         </dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -78,7 +81,16 @@
 <!--			<groupId>org.sakaiproject.kernel</groupId>-->
 <!--			<artifactId>sakai-kernel-util</artifactId>-->
 <!--		</dependency>-->
-
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <scope>test</scope>
+        </dependency>
 	</dependencies>
 	<build>
 		<!-- configure the build to use the standard maven structure -->
