@@ -12,7 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class TableStructure {
 	int[] colWidths;
-	String []colHeaders;
+	String[] colHeaders;
 	List<Object[]> data;
 }
 

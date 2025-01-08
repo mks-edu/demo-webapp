@@ -25,33 +25,42 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import mks.platform.samplewebapp.common.model.TableStructure;
+import mks.platform.samplewebapp.services.StorageService;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
+@RequestMapping("/handsontable")
 public class HansontableController extends BaseController {
 	@Value("${productList.colHeaders}")
 	private String[] productListColHeaders;
 	
 	@Value("${productList.colWidths}")
 	private int[] productListColWidths;
+	
+	@Autowired
+	StorageService storageService;
 
-	@GetMapping(value = "/handsontable")
+	@GetMapping(value = "")
 	public ModelAndView displayHome(HttpServletRequest request, HttpSession httpSession) {
 		ModelAndView mav = new ModelAndView("handsontable");
 
 		return mav;
 	}
 	
-	@GetMapping(value = {"/handsontable/loaddata"}, produces="application/json")
+	@GetMapping(value = {"loaddata"}, produces="application/json")
 	@ResponseBody
     public TableStructure getProductTableData() {
 		List<Object[]> lstProducts = getDemoData();
@@ -61,6 +70,19 @@ public class HansontableController extends BaseController {
         return productTable;
     }
 
+	@PostMapping(value = "/save")
+	@ResponseBody
+	public TableStructure processSave(@RequestBody TableStructure tableData) {
+		
+		// Demo to save and reload data
+		List<Object[]> newData = storageService.saveProductList(tableData.getData());
+		
+		// Re-update data and return back to client.
+		tableData.setData(newData);
+
+		return tableData;
+	}
+    
 	private List<Object[]> getDemoData() {
 		List<Object[]> data = new ArrayList<Object[]>();
 		
